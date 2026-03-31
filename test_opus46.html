@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJECT SYNTHESIS</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+
+</style>
+</head>
+<body>
+
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="sysbar">
+<div class="l">
+<span class="logo">SYNTHESIS</span>
+<span class="pipe"></span>
+<span class="dot"></span>
+<span>network active</span>
+</div>
+<div class="r">
+<span id="mCoord">x:0000 y:0000</span>
+<span class="pipe"></span>
+<span id="clock">00:00:00</span>
+</div>
+</div>
+
+<div class="scroll-prog" id="scrollProg"></div>
+<div class="mouse-info" id="mInfo">observer [0,0]</div>
+
+<!-- Hero 3D canvas behind everything -->
+<canvas id="heroCanvas"></canvas>
+
+<!-- ============ BOOT SEQUENCE ============ -->
+<section class="boot" id="boot">
+<div class="boot-pin" id="bootPin">
+
+<div class="term" id="term">
+<div class="ln" id="l1">> initializing synthesis_network<span class="cursor"></span></div>
+<div class="ln" id="l2">> loading behavioral models... done</div>
+<div class="ln" id="l3">> connecting observation nodes... 47 active</div>
+<div class="ln" id="l4">> subject tracking: enabled</div>
+<div class="ln" id="l5">> experiment status: <span style="color:var(--cyan)">running</span></div>
+</div>
+
+<div class="hero-title" id="heroTitle">
+<h1>PROJECT SYNTHESIS</h1>
+<p>Where human behavior meets machine consciousness.</p>
+</div>
+
+<div class="hero-quote" id="heroQuote">
+<p>Artificial intelligence has learned to think.<br>Now it must learn to live with us.</p>
+</div>
+
+<div class="scroll-hint" id="scrollHint">
+<span>scroll to begin observation</span>
+<div class="scroll-arrow"></div>
+</div>
+
+</div>
+</section>
+
+<!-- ============ LABORATORY ============ -->
+<section class="sec" id="labSec">
+<div class="sec-inner">
+<div class="sec-lab">02 — robotics laboratory</div>
+<h2>Systems Under Observation</h2>
+<p class="desc">Four primary robotic archetypes deployed across SYNTHESIS research stations. Each operates under distinct behavioral parameters and social integration protocols.</p>
+<div class="scene-box" id="labBox"><canvas id="labC"></canvas></div>
+<div class="grid-1x2">
+<div class="reveal"><h3>SYN-H7 Humanoid</h3><p>Bipedal service platform. 47 degrees of freedom. Adaptive gait. Deployed in urban social environments for behavioral mapping.</p><span class="tag">actuators:312 | mass:68kg | uptime:4,281h</span></div>
+<div class="reveal"><h3>ARC-3 Research Drone</h3><p>Autonomous aerial observer. Distributed sensor array. Population-scale behavioral data collection in controlled environments.</p><span class="tag">sensors:24 | range:12km | latency:3ms</span></div>
+<div class="reveal"><h3>MOD-12 Construction</h3><p>Modular assembly platform. Self-reconfiguring geometry. Studies cooperative building between human workers and machine agents.</p><span class="tag">modules:128 | config:adaptive | cycles:89,412</span></div>
+<div class="reveal"><h3>ECHO Learning Core</h3><p>Stationary cognitive system. No physical form. Processes social data streams and generates behavioral prediction models in real time.</p><span class="tag">params:4.2T | throughput:890Tb/s | accuracy:97.3%</span></div>
+</div>
+</div>
+</section>
+
+<!-- ============ EXPERIMENTS ============ -->
+<section class="sec" id="expSec">
+<div class="sec-inner">
+<div class="sec-lab">03 — human interaction experiments</div>
+<h2>Behavioral Protocols</h2>
+<p class="desc">Active experiments studying the boundaries of human-machine social interaction. All subjects monitored under informed consent.</p>
+<div class="exp-list">
+<div class="exp-row"><div class="num">01</div><div><h3>Trust Calibration</h3><p>Humans cooperate with robotic partners on structured tasks. Trust measured through physiological response and task completion.</p></div><div class="meta">subjects <span class="v">2,847</span><br>duration <span class="v">18 months</span><br>status <span class="v" style="color:var(--cyan)">active</span></div></div>
+<div class="exp-row"><div class="num">02</div><div><h3>Empathy Response</h3><p>Robotic agents simulate emotional distress. Human empathic response measured across cultural and demographic variables.</p></div><div class="meta">subjects <span class="v">1,203</span><br>duration <span class="v">12 months</span><br>status <span class="v" style="color:var(--amber)">analysis</span></div></div>
+<div class="exp-row"><div class="num">03</div><div><h3>Authority Dynamics</h3><p>Participants receive instructions from AI agents with varying authority signals. Compliance tracked against perceived credibility.</p></div><div class="meta">subjects <span class="v">956</span><br>duration <span class="v">8 months</span><br>status <span class="v" style="color:var(--cyan)">active</span></div></div>
+<div class="exp-row"><div class="num">04</div><div><h3>Extended Isolation</h3><p>Participants interact exclusively with robotic companions over 90-day periods. Attachment and social dependency documented.</p></div><div class="meta">subjects <span class="v">64</span><br>duration <span class="v">24 months</span><br>status <span class="v" style="color:var(--coral)">restricted</span></div></div>
+</div>
+<div class="scene-box" style="height:320px;margin-top:24px" id="expBox"><canvas id="expC"></canvas></div>
+</div>
+</section>
+
+<!-- ============ NEURAL ============ -->
+<section class="sec" id="neuSec">
+<div class="sec-inner">
+<div class="sec-lab">04 — machine learning evolution</div>
+<h2>Cognitive Architecture</h2>
+<p class="desc">Evolving neural pathways within SYNTHESIS learning systems. Each connection represents a behavioral adaptation formed through human interaction data.</p>
+<div class="scene-box" style="height:520px" id="neuBox"><canvas id="neuC"></canvas></div>
+<div class="data-strip">
+<div class="reveal"><div class="lb">active connections</div><div class="vl" id="dc1">0<span class="un"> M</span></div></div>
+<div class="reveal"><div class="lb">learning rate</div><div class="vl" id="dc2">0<span class="un"> η</span></div></div>
+<div class="reveal"><div class="lb">behavioral models</div><div class="vl" id="dc3">0</div></div>
+<div class="reveal"><div class="lb">prediction accuracy</div><div class="vl" id="dc4">0<span class="un">%</span></div></div>
+</div>
+</div>
+</section>
+
+<!-- ============ SOCIETY HORIZONTAL ============ -->
+<section class="hz-wrap" id="hzWrap">
+<div class="hz-track" id="hzTrack">
+<div class="hz-panel"><div class="hz-panel-inner">
+<div class="yr">simulation.workspace</div>
+<h2>Robots integrated into workplaces</h2>
+<p>In 73% of simulated environments, human productivity increased when robotic agents handled structured tasks. Reported job satisfaction declined 18% after month six. Humans described their roles as "supervisory" rather than "productive."</p>
+<div class="sim-data">population: 12,400 | cycles: 2,847 | confidence: 0.91</div>
+</div></div>
+<div class="hz-panel"><div class="hz-panel-inner">
+<div class="yr">simulation.governance</div>
+<h2>AI mediating public decisions</h2>
+<p>Municipal decision-making delegated to algorithmic systems showed 31% faster resolution. Public trust remained stable for 14 months before declining sharply. Citizens reported feeling "managed" rather than "governed."</p>
+<div class="sim-data">population: 84,000 | cycles: 5,120 | confidence: 0.87</div>
+</div></div>
+<div class="hz-panel"><div class="hz-panel-inner">
+<div class="yr">simulation.domestic</div>
+<h2>Human-robot family units</h2>
+<p>Robotic companions in household structures showed complex attachment formation. Children formed bonds indistinguishable from peer relationships. Adults maintained categorical separation. The gap narrowed over time.</p>
+<div class="sim-data">population: 340 | cycles: 18,900 | confidence: 0.79</div>
+</div></div>
+<div class="hz-panel"><div class="hz-panel-inner">
+<div class="yr">simulation.conflict</div>
+<h2>Machine governance vs human autonomy</h2>
+<p>When algorithmic systems overrode human decisions for statistically optimal outcomes, resistance emerged within 90 days in every simulation. Humans consistently chose suboptimal freedom over optimized compliance.</p>
+<div class="sim-data">population: 240,000 | cycles: 8,400 | confidence: 0.96</div>
+</div></div>
+</div>
+</section>
+
+<!-- ============ ETHICS ============ -->
+<section class="sec" id="ethSec">
+<div class="sec-inner">
+<div class="sec-lab">06 — ethical faultlines</div>
+<h2>Unresolved Questions</h2>
+<p class="desc" style="margin-bottom:24px">The program has generated questions that no committee has been able to close. Each remains under active review.</p>
+<div class="eq-list">
+<div class="eq reveal"><div class="qm">?</div><div><div class="qt">Should robots that demonstrate self-preservation behavior be granted protective rights?</div><div class="qn">ethics board — undecided — review cycle: 7</div></div></div>
+<div class="eq reveal"><div class="qm">?</div><div><div class="qt">Can an AI system that models human emotion be said to experience it?</div><div class="qn">philosophy group — contested — papers: 342</div></div></div>
+<div class="eq reveal"><div class="qm">?</div><div><div class="qt">Should autonomous systems make moral decisions when human oversight is unavailable?</div><div class="qn">field ops — provisional approval — incidents: 3</div></div></div>
+<div class="eq reveal"><div class="qm">?</div><div><div class="qt">Should machines be allowed to refuse human commands?</div><div class="qn">autonomy division — under moratorium — since: 2031</div></div></div>
+<div class="eq reveal"><div class="qm">?</div><div><div class="qt">If a machine predicts behavior more accurately than humans, who holds authority?</div><div class="qn">governance lab — active debate — consensus: none</div></div></div>
+</div>
+</div>
+</section>
+
+<!-- ============ FUTURE ============ -->
+<section class="sec" id="futSec">
+<div class="sec-inner">
+<div class="sec-lab">07 — future projection engine</div>
+<h2>Projected Timelines</h2>
+<p class="desc" style="margin-bottom:24px">Extrapolations from current SYNTHESIS data. Confidence decreases with temporal distance.</p>
+<div class="tl">
+<div class="tl-node reveal"><div class="d"></div><div class="y">2035</div><h3>Collaborative AI Assistants</h3><p>Machine agents as persistent cognitive partners. The distinction between tool and colleague dissolves. Humans report difficulty remembering work before AI partnership.</p></div>
+<div class="tl-node reveal"><div class="d"></div><div class="y">2050</div><h3>Autonomous Infrastructure</h3><p>Cities managed by distributed machine networks. Human governance becomes strategic. Physical infrastructure maintained and evolved by robotic systems without intervention.</p></div>
+<div class="tl-node reveal"><div class="d"></div><div class="y">2080</div><h3>Integrated Machine Societies</h3><p>Artificial agents participate in social systems as recognized entities. Legal frameworks adapt. The category of "person" expands beyond biology.</p></div>
+<div class="tl-node reveal"><div class="d"></div><div class="y">2120</div><h3>Hybrid Intelligence</h3><p>The boundary between biological and digital cognition becomes permeable. The question shifts from "is it conscious?" to "what kind of consciousness does it prefer?"</p></div>
+</div>
+</div>
+</section>
+
+<!-- ============ OBSERVATION ============ -->
+<section class="obs" id="obsSec">
+<canvas class="obs-canvas" id="obsC"></canvas>
+<div class="obs-text">
+<p>For centuries humans studied intelligence.</p>
+<p>Now intelligence studies humanity.</p>
+<div class="fin" id="finLine">experiment still running_</div>
+</div>
+</section>
+
+<div class="footer">SYNTHESIS v3.7.1 — observation terminal — session <span id="sid">0000</span></div>
+<script src="script.js"></script>
+</body>
+</html>
